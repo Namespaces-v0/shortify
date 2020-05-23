@@ -1,0 +1,15 @@
+@page "/MusicPage"
+@using System.Net.Http
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@inject HttpClient Http
+
+<h2>shortify</h2>
+<p>Your Library</p>
+@MusicLibrary
+@code {
+    private const string ServiceEndpoint = "https://localhost:5001/api/SpotifyServices/Library";
+    private string MusicLibrary;
+    protected override async Task OnInitializedAsync() => MusicLibrary = await Http.GetStringAsync(ServiceEndpoint);
+}
+

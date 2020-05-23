@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>ac482c8e-d160-4a91-a6fb-c1eb3c8793c8</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.4" />
+    <PackageReference Include="System.Net.Http.Json" Version="3.2.0" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\shortify.Client.csproj" />
+    <ProjectReference Include="..\Shared\shortify.Shared.csproj" />
+  </ItemGroup>
+</Project>

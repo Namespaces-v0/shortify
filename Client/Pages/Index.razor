@@ -1,0 +1,19 @@
+﻿@page "/"
+@using System.Net.Http
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h2>shortify</h2>
+<p>play the songs you liked from spotify</p>
+<button class="button button-outline" @onclick="NavigateToAuthorizationPage">login in to spotify</button>
+
+@code {
+    private const string ServiceEndpoint = "https://localhost:5001/api/SpotifyServices/Authorize";
+    private string AuthorizationURL;
+    protected override async Task OnInitializedAsync() => AuthorizationURL = await Http.GetStringAsync(ServiceEndpoint);
+   private void NavigateToAuthorizationPage()
+    {
+        NavigationManager.NavigateTo(AuthorizationURL);
+    }
+}
+
