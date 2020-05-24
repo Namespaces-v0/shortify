@@ -76,8 +76,7 @@ namespace shortify.Server.Controllers
                     _access_token = _spotifyservicesapitoken.access_token;
                     var cacheEntryOptions = new MemoryCacheEntryOptions();
                     _cache.Set(SpotifyServicesAPITokenCache.access_token, _access_token, cacheEntryOptions);
-                }
-               
+                }               
                 if (!_cache.TryGetValue(SpotifyServicesAPITokenCache.token_type, out _token_type))
                 {
                     _token_type = _spotifyservicesapitoken.token_type;
@@ -113,6 +112,8 @@ namespace shortify.Server.Controllers
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", access_token.ToString());
             var response = await client.SendAsync(request);
             var content = await response.Content.ReadAsStringAsync();
+            var deserializedContent =  JsonSerializer.Deserialize<SpotifyServicesAlbum>(content);
+            Console.WriteLine(deserializedContent.items);
             return content;
         }
     }
